@@ -10,18 +10,24 @@ class MainClass
         Console.WriteLine("Укажите глубину эха");
         var deep = int.Parse(Console.ReadLine());
 
-        Echo(str, deep);
-
-        Console.ReadKey();
+        Echo(str, deep);        
     }
 
-    static void Echo(string phrase, int deep)
+    static void Echo(string saidword, int deep)
     {
-        Console.WriteLine(phrase);
+        var modif = saidword;
+
+        if(modif.Length > 2)
+        {
+            modif = modif.Remove(0, 2);
+        }
+
+        Console.BackgroundColor = (ConsoleColor)deep;
+        Console.WriteLine("..." + modif);
 
         if (deep > 1)
         {
-            Echo(phrase, deep - 1);
+            Echo(modif, deep - 1);
         }
     }
 }
